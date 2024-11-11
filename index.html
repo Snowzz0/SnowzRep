@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Jogos</title>
+    <title>JSON - MeuTorrentGames</title>
+    <style>
+        /* Modo escuro */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        pre {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            padding: 20px;
+            white-space: pre-wrap; /* Garante que o texto não saia da tela */
+            word-wrap: break-word; /* Quebra de linha quando necessário */
+            font-size: 16px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Jogos Disponíveis</h1>
-    <pre id="json-content"></pre> <!-- A tag <pre> vai preservar a formatação -->
+    <!-- Apenas o JSON será exibido aqui -->
+    <pre id="json-content"></pre>
 
     <script>
         fetch('https://raw.githubusercontent.com/Snowzz0/SnowzRep/main/Jogos.json')
