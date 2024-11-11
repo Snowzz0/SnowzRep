@@ -7,26 +7,16 @@
 </head>
 <body>
     <h1>Jogos Disponíveis</h1>
-    <ul id="jogos"></ul>
+    <pre id="json-content"></pre> <!-- A tag <pre> vai preservar a formatação -->
 
     <script>
-        // URL do arquivo JSON hospedado no GitHub
         fetch('https://raw.githubusercontent.com/Snowzz0/SnowzRep/main/Jogos.json')
             .then(response => response.json())
             .then(data => {
-                const jogosList = document.getElementById('jogos');
-                
-                // Adicionando título do projeto (optional)
-                const projectName = document.createElement('h2');
-                projectName.textContent = data.name;
-                document.body.insertBefore(projectName, jogosList);
-
-                // Iterando sobre os downloads e exibindo na página
-                data.downloads.forEach(jogo => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${jogo.title} - ${jogo.fileSize}`;
-                    jogosList.appendChild(listItem);
-                });
+                // Converte o objeto JSON em uma string formatada e exibe no elemento
+                const jsonString = JSON.stringify(data, null, 2); // null, 2 adiciona espaçamento e formatação
+                const jsonContent = document.getElementById('json-content');
+                jsonContent.textContent = jsonString; // Exibe a string JSON no elemento <pre>
             })
             .catch(error => console.error("Erro ao carregar os dados:", error));
     </script>
