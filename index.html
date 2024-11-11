@@ -3,32 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Jogos</title>
+    <title>JSON - MeuTorrentGames</title>
     <style>
+        /* Modo escuro básico */
         body {
             background-color: #121212;
-            color: white;
+            color: #e0e0e0;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         pre {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 5px;
-            font-size: 14px;
+            color: #f8f8f2;
+            white-space: pre-wrap; /* Garante que o texto não saia da tela */
+            word-wrap: break-word; /* Quebra de linha quando necessário */
+            font-size: 16px;
+            margin: 0; /* Remove a margem */
+            padding: 0; /* Remove o padding */
+            background: none; /* Remove qualquer fundo */
         }
     </style>
 </head>
 <body>
-    <h1>Jogos Disponíveis</h1>
-    <pre id="json-container"></pre>
+    <!-- Exibe o JSON puro aqui -->
+    <pre id="json-content"></pre>
 
     <script>
         fetch('https://raw.githubusercontent.com/Snowzz0/SnowzRep/main/Jogos.json')
             .then(response => response.json())
             .then(data => {
-                document.getElementById('json-container').textContent = JSON.stringify(data, null, 2);
+                // Converte o objeto JSON em uma string formatada e exibe no elemento
+                const jsonString = JSON.stringify(data, null, 2); // null, 2 adiciona espaçamento e formatação
+                const jsonContent = document.getElementById('json-content');
+                jsonContent.textContent = jsonString; // Exibe o JSON cru no elemento <pre>
             })
-            .catch(error => console.error('Erro ao carregar o JSON:', error));
+            .catch(error => console.error("Erro ao carregar os dados:", error));
     </script>
 </body>
 </html>
